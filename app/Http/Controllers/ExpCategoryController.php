@@ -52,7 +52,9 @@ class ExpCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $expense_category = ExpenseCategory::find($id);
+        $expense_category->update($request->all());
+        return $expense_category;
     }
 
     /**
@@ -61,8 +63,9 @@ class ExpCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        ExpenseCategory::destroy($id);
+        return $id;
     }
 }

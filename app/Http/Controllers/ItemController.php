@@ -54,7 +54,9 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $item = Item::find($id);
+        $item->update($request->all());
+        return $item;
     }
 
     /**
@@ -63,8 +65,9 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        Item::destroy($id);
+        return $id;
     }
 }

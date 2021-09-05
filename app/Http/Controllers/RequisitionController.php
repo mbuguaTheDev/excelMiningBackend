@@ -55,7 +55,9 @@ class RequisitionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $requisition = Requisition::find($id);
+        $requisition->update($request->all());
+        return $requisition;
     }
 
     /**
@@ -64,8 +66,9 @@ class RequisitionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        Requisition::destroy($id);
+        return $id;
     }
 }

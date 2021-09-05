@@ -10,6 +10,8 @@ class Debt extends Model
     use HasFactory;
     protected $fillable = [
         'amount',
-        'expense'
+        'expense',
+        'debt_ref',
+        'supplier'
     ];
 }

@@ -54,7 +54,9 @@ class PettyCashController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $petty_cash = PettyCash::find($id);
+        $petty_cash->update($request->all());
+        return $petty_cash;
     }
 
     /**
@@ -63,8 +65,9 @@ class PettyCashController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        PettyCash::destroy($id);
+        return $id;
     }
 }

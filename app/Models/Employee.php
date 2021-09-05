@@ -15,6 +15,7 @@ class Employee extends Model
         'mobile_no',
         'id_image',
         'passport',
-        'site'
+        'site',
+        'salary'
     ];
 }

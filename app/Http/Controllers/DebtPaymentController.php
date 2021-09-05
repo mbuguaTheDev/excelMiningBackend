@@ -53,7 +53,9 @@ class DebtPaymentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $debt_payment = DebtPayment::find($id);
+        $debt_payment->update($request->all());
+        return $debt_payment;
     }
 
     /**
@@ -62,8 +64,9 @@ class DebtPaymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        DebtPayment::destroy($id);
+        return $id;
     }
 }

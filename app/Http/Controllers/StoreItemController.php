@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\MiningSIte;
-use Illuminate\Http\Request;
 
-class MiningSiteController extends Controller
+use Illuminate\Http\Request;
+use App\Models\StoreItem;
+
+class StoreItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,7 @@ class MiningSiteController extends Controller
      */
     public function index()
     {
-        return MiningSite::all();
+        return StoreItem::all();
     }
 
     /**
@@ -25,9 +26,12 @@ class MiningSiteController extends Controller
     public function add(Request $request)
     {
         $request->validate([
-            'site_name' => 'required'
+            'name'=> 'required',
+            'qty_received'=> 'required',
+            'date_received' => 'required',
         ]);
-        return MiningSite::create($request->all());
+
+        return StoreItem::create($request->all());
     }
 
     /**
@@ -50,9 +54,9 @@ class MiningSiteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $mining_site = MiningSite::find($id);
-        $mining_site->update($request->all());
-        return $mining_site;
+        $store_item = StoreItem::find($id);
+        $store_item->update($request->all());
+        return $store_item;
     }
 
     /**
@@ -63,7 +67,7 @@ class MiningSiteController extends Controller
      */
     public function delete($id)
     {
-        MiningSite::destroy($id);
+        StoreItem::destroy($id);
         return $id;
     }
 }

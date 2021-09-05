@@ -28,11 +28,8 @@ class EmployeeController extends Controller
         $request->validate([
             'name'=> 'required',
             'id_number'=> 'required',
-            'dob'=> 'required',
-            'mobile_no' => 'required',
-            'id_image' => 'required',
-            'passport' => 'required',
-            'site' => 'required'
+            'salary' => 'required',
+            'site' => 'required',
         ]);
 
         return Employee::create($request->all());
@@ -58,7 +55,9 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $employee = Employee::find($id);
+        $employee->update($request->all());
+        return $employee;
     }
 
     /**
@@ -67,8 +66,9 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        Employee::destroy($id);
+        return $id;
     }
 }

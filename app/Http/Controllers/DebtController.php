@@ -27,7 +27,8 @@ class DebtController extends Controller
     {
         $request->validate([
             'amount' => 'required|integer',
-            'expense' => 'required|string'
+            'expense' => 'required|string',
+            'supplier' => 'required|string'
         ]);
 
         return Debt::create($request->all());
@@ -53,7 +54,9 @@ class DebtController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $debt = Debt::find($id);
+        $debt->update($request->all());
+        return $debt;
     }
 
     /**
@@ -62,8 +65,9 @@ class DebtController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        Debt::destroy($id);
+        return $id;
     }
 }

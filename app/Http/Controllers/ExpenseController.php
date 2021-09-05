@@ -26,10 +26,12 @@ class ExpenseController extends Controller
     public function add(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'exp_category' => 'required',
+            'supplier' => 'required',
             'amount' => 'required',
-            'site' => 'required'
+            'exp_category' => 'required',
+            'site' => 'required',
+            'payment_status' => 'required',
+            'exp_date' => 'required'
         ]);
 
         return Expense::create($request->all());
@@ -55,7 +57,9 @@ class ExpenseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $expense = Expense::find($id);
+        $expense->update($request->all());
+        return $expense;
     }
 
     /**
@@ -64,8 +68,9 @@ class ExpenseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        Expense::destroy($id);
+        return $id;
     }
 }

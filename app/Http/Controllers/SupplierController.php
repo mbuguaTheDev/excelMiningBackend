@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\MiningSIte;
-use Illuminate\Http\Request;
 
-class MiningSiteController extends Controller
+use Illuminate\Http\Request;
+use App\Models\Supplier;
+
+class SupplierController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,7 @@ class MiningSiteController extends Controller
      */
     public function index()
     {
-        return MiningSite::all();
+        return Supplier::all();
     }
 
     /**
@@ -24,10 +25,13 @@ class MiningSiteController extends Controller
      */
     public function add(Request $request)
     {
+        {
         $request->validate([
-            'site_name' => 'required'
+            'supplier_name'=> 'required',     
         ]);
-        return MiningSite::create($request->all());
+
+        return Supplier::create($request->all());
+    }
     }
 
     /**
@@ -50,9 +54,9 @@ class MiningSiteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $mining_site = MiningSite::find($id);
-        $mining_site->update($request->all());
-        return $mining_site;
+        $supplier = Supplier::find($id);
+        $supplier->update($request->all());
+        return $supplier;
     }
 
     /**
@@ -63,7 +67,7 @@ class MiningSiteController extends Controller
      */
     public function delete($id)
     {
-        MiningSite::destroy($id);
+        Supplier::destroy($id);
         return $id;
     }
 }
