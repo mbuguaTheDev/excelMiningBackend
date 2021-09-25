@@ -11,6 +11,7 @@ class PettyCash extends Model
     protected $fillable = [
         'money_in',
         'money_out',
+        'date_added',
         'remarks'
     ];
 }
