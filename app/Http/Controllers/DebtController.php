@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Debt;
+use App\Models\Supplier;
+use DB;
 
 class DebtController extends Controller
 {
@@ -14,7 +16,13 @@ class DebtController extends Controller
      */
     public function index()
     {
+        // $groupedDebts = DB::table('debts')
+        //          ->select('supplier', DB::raw('sum(amount) as total'))
+        //          ->groupBy('supplier')
+        //          ->get(); 
+
         return Debt::all();
+        
     }
 
     /**
@@ -32,6 +40,13 @@ class DebtController extends Controller
         ]);
 
         return Debt::create($request->all());
+    }
+
+    //get outstanding debts from supplier table
+    public function current_debts(){
+        $current_debts = Supplier::where('outstanding_debt', '>', 0)->get();
+
+        return $current_debts;
     }
 
     /**

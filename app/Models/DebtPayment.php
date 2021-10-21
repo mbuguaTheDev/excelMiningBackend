@@ -10,7 +10,9 @@ class DebtPayment extends Model
     use HasFactory;
     protected $fillable = [
         'amount',
+        'supplier',
         'payment_mode',
-        'txn_ref'
+        'txn_ref',
+        'date_paid'
     ];
 }

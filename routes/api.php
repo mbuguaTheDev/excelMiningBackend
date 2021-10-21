@@ -78,6 +78,7 @@ Route::delete('/petty_cash/delete/{id}', [PettyCashController::class, 'delete'])
 
 //debts
 Route::get('/debts', [DebtController::class, 'index']);
+Route::get('/current_debts', [DebtController::class, 'current_debts']);
 Route::post('/debts/add', [DebtController::class, 'add']);
 Route::put('/debts/update/{id}', [DebtController::class, 'update']);
 Route::delete('/debts/delete/{id}', [DebtController::class, 'delete']);
