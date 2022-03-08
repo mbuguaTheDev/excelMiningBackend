@@ -14,7 +14,12 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return Employee::all();
+        return Employee::where('is_active', '=', true)->get();;
+    }
+
+    //get all inactive employees
+    public function inactive(){
+        return Employee::where('is_active', '=', false)->get();
     }
 
     /**

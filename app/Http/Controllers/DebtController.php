@@ -39,6 +39,11 @@ class DebtController extends Controller
             'supplier' => 'required|string'
         ]);
 
+        // Supplier::update([
+        //     $request['supplier'] => 
+        //     $request['amount']
+        // ]);
+
         return Debt::create($request->all());
     }
 
@@ -47,6 +52,7 @@ class DebtController extends Controller
         $current_debts = Supplier::where('outstanding_debt', '>', 0)->get();
 
         return $current_debts;
+        
     }
 
     /**

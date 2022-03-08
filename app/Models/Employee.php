@@ -16,6 +16,7 @@ class Employee extends Model
         'id_image',
         'passport',
         'site',
-        'salary'
+        'salary',
+        'is_active'
     ];
 }

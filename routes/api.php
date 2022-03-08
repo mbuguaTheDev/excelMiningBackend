@@ -54,6 +54,7 @@ Route::delete('/items/delete/{id}', [ItemController::class, 'delete']);
 
 //employees
 Route::get('/employees', [EmployeeController::class, 'index']);
+Route::get('/employees/inactive', [EmployeeController::class, 'inactive']);
 Route::post('/employees/add', [EmployeeController::class, 'add']);
 Route::put('/employees/update/{id}', [EmployeeController::class, 'update']);
 Route::delete('/employees/delete/{id}', [EmployeeController::class, 'delete']);
